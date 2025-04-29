@@ -18,6 +18,7 @@
    
 
 
- ## Testing (not finishephp artisan test
+ ## Testing (not finished) 
+ php artisan test
 
 
