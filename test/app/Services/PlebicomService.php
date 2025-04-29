@@ -24,11 +24,8 @@ class PlebicomService {
 
     protected function initSettings(){
         $this->baseUrl = config('services.plebicom.url');
-        // $this->login = config('services.plebicom.login');
-        // $this->credentials = config('services.plebicom.pwd');
-
-        $this->login = "swizy@dA9fp8V73ND7ggF";
-        $this->credentials = ".\$D72H#j43N2a7xs4QmM2Q8-taq~2*EbKc]3u=Y7G!mr)Y_U?4";
+        $this->login = config('services.plebicom.login');
+        $this->credentials = config('services.plebicom.pwd');
     }
 
     public function authenticate() {
@@ -69,10 +66,8 @@ class PlebicomService {
             throw new Exception("Authentication failed:" . $response->status());
             
         }catch(Exception $e) {
-            return $e->getMessage();
-
-            // Log::error("Error while authenticating with Plebicom: " . $response->body());
-            // throw new Exception("Authentication failed", $response->status());
+            Log::error("Error while authenticating with Plebicom: " . $response->body());
+            throw new Exception("Authentication failed, error : ", $e->getMessage());
         }
     }
 
